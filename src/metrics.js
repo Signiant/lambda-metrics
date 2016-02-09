@@ -52,8 +52,8 @@ function setMetrics(cw, event, context){
             }
           });
         }else{
-          console.log("ERROR - no invocations found");
-          context.fail("No invocations to process");
+          console.log("Warning - no invocations found");
+          context.succeed("No invocations to process");
         }
       }
     });
