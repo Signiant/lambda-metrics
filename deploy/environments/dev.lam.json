@@ -5,7 +5,7 @@
   "region": "us-east-1",
   "runtime": "nodejs",
   "memorySize":128,
-  "timeout": 8,
+  "timeout": 5,
   "handler": "metrics.handler",
   "events": [
     {
