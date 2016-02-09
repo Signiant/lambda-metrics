@@ -1,0 +1,23 @@
+{
+  "name": "lambda-metrics",
+  "version": "0.0.1",
+  "description": "Published custom metrics for a Lambda function based on the failure to invocation ratio.",
+  "main": "metrics.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Lambda",
+    "Metrics",
+    "Monitoring"
+  ],
+  "author": "Signiant",
+  "license": "ISC",
+  "dependencies": {
+    "async": "^1.5.2",
+    "aws-sdk": "^2.2.33",
+    "lodash": "^4.2.1",
+    "moment": "^2.11.2",
+    "sleep": "^3.0.1"
+  }
+}

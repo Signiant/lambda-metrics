@@ -1,0 +1,17 @@
+{
+  "name": "lambdaMetricCalculator",
+  "archive": "lambda.zip",
+  "description": "Calculates that percent failure metric for Lambda functions.",
+  "region": "us-east-1",
+  "runtime": "nodejs",
+  "memorySize":128,
+  "timeout": 8,
+  "handler": "metrics.handler",
+  "events": [
+    {
+      "type": "sns",
+      "src": "",
+      "parameter": "Lambda-Monitoring-Signiant"
+    }
+  ]
+}

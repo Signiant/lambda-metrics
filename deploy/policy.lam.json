@@ -1,0 +1,25 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "logs",
+            "Resource": "*",
+            "Action": [
+                "logs:CreateLogGroup",
+                "logs:CreateLogStream",
+                "logs:PutLogEvents"
+            ],
+            "Effect": "Allow"
+        },
+        {
+      "Sid": "metrics",
+      "Action": [
+        "cloudwatch:GetMetricStatistics",
+        "cloudwatch:PutMetricData",
+        "cloudwatch:SetAlarmState"
+      ],
+      "Effect": "Allow",
+      "Resource": "*"
+    }
+    ]
+}
