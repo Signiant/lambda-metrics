@@ -3,7 +3,7 @@ var async = require('async');
 var sleep = require('sleep');
 
 
-exports.handler = function(event, context){
+exports.handler = function(event, context, callback){
 
   console.log('Received event:', JSON.stringify(event, null, 2));
   // Event stops triggering within a few minutes without a delay
@@ -19,12 +19,12 @@ exports.handler = function(event, context){
       console.log("Error setting alarm state", err, err.stack);
     }else{
       console.log("Successfully set alarm state");
-      setMetrics(cw, event, context);
+      setMetrics(cw, event, callback);
     }
   });
 }
 
-function setMetrics(cw, event, context){
+function setMetrics(cw, event, callback){
   async.parallel({
     errors: function(callback){ cw.getMetrics('Errors', callback) },
     invocations: function(callback){ cw.getMetrics('Invocations', callback) }
@@ -32,7 +32,7 @@ function setMetrics(cw, event, context){
     function(err, results){
       if(err){
         console.log("ERROR fetching metrics", err, err.stack);
-        context.fail("Unable to retrieve metrics");
+        callback(err);
       }else{
         var errors = results.errors;
         var invocations = results.invocations;
@@ -44,16 +44,16 @@ function setMetrics(cw, event, context){
           cw.putCustomMetrics(percentFailure, function(err, data){
             if(err){
               console.log("ERROR - unable to post custom metric", err, err.stack);
-              context.fail("Unable to post custom metric");
+              callback(err);
             }else{
               console.log("Successfully posted custom metric");
               console.log(data);
-              context.succeed("Successfully posted custom metric");
+              callback();
             }
           });
         }else{
           console.log("Warning - no invocations found");
-          context.succeed("No invocations to process");
+          callback();
         }
       }
     });
