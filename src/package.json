@@ -1,6 +1,6 @@
 {
   "name": "lambda-metrics",
-  "version": "0.0.1",
+  "version": "1.1.0",
   "description": "Published custom metrics for a Lambda function based on the failure to invocation ratio.",
   "main": "metrics.js",
   "scripts": {
