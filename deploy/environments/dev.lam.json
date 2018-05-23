@@ -3,7 +3,7 @@
   "archive": "lambda.zip",
   "description": "Calculates that percent failure metric for Lambda functions.",
   "region": "us-east-1",
-  "runtime": "nodejs4.3",
+  "runtime": "nodejs8.10,
   "memorySize":128,
   "timeout": 5,
   "handler": "metrics.handler",
